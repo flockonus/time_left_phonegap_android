@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notification Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-1.6.4.min.js"></script>
+    <!--
+        <link type="text/css" href="jquery.mobile-1.0rc2.css" />
+        <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.0rc2.js"></script>
+        -->
+    
+    <script type="text/javascript" charset="utf-8">
+    Trigs = {}
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        // Empty
+        Trigs.ini1 = setInterval( vibrate, 10*1000 )
+        Trigs.ini2 = setInterval( playBeep, 10*1000 )
+    }
+
+    // Show a custom alert
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+
+    // Beep three times
+    //
+    function playBeep() {
+        navigator.notification.beep(2);
+    }
+
+    // Vibrate for 2 seconds
+    //
+    function vibrate() {
+        navigator.notification.vibrate(2000);
+    }
+    
+    // Tells the phone to shush!
+    function stopAnnoying(){
+    	clearInterval(Trigs.ini1)
+    	clearInterval(Trigs.ini2)
+    }
+
+    </script>
+    
+    
+    <style>
+  	*{
+  		padding: 0;
+  		margin: 0;
+  	}
+  	
+  	html,body{
+  		background: #05E;
+  		height:100%; /* needed for container min-height */
+  		text-align: center;
+  		color: white;
+  		overflow: hidden;
+  	}
+  	
+  	a, a:hover{
+  		color: white;
+  	}
+  	
+  	#full{
+  		width: 100%;
+  		background-color: #999;
+  		background: url('bordinha.jpg') repeat;
+  		height:auto !important; /* real browsers */
+		height:100%; /* IE6: treaded as min-height*/
+		
+		min-height:100%; /* real browsers */
+  	}
+  	
+  	#buttonBar{
+  		position: absolute;
+  		left: 30px;
+  		top: 30px;
+  	}
+  	
+  	#elapsedBar{
+  		background-color: rgba(10, 200, 10,    0.6);
+  		position: absolute;
+  		width: 50%;
+  		top: 0;
+  		left: 0;
+  		bottom: 0;
+  		right: 50%;
+  	}
+  	
+  	#addCont{
+  		position: absolute;
+  		right: 0;
+  		bottom: 0;
+  		font-size: 3.5em;
+  		text-shadow: #333 1px 1px 1px;
+  		padding: 3px;
+  	}
+  	
+  	#remain{
+  		position: absolute;
+		width: 100%;
+		font-size: 5em;
+		color: rgba(255, 255, 255, 0.8);
+		top: 30%;
+  	}
+  	
+  </style>
+  </head>
+  <body onclick="stopAnnoying()">
+  	<div id="full">
+  		<div id="remain">-10:30</div>
+  		<div id="elapsedBar">
+  			&nbsp;
+  		</div>
+  		<div id="buttonBar">
+		    <p><a href="#" >Show Alert</a></p>
+		    <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
+		    <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
+  		</div>
+  		
+  		<div id="addCont" onclick="showAlert(); return false;">+</div>
+  	</div>
+  	<script src="./time_left_man.js"></script>
+  </body>
+</html>
