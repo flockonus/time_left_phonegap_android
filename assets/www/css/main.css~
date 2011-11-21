@@ -1,0 +1,59 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+html,body{
+	background: #05E;
+	height:100%; /* needed for container min-height */
+	text-align: center;
+	color: white;
+	overflow: hidden;
+}
+
+a, a:hover{
+	color: white;
+}
+
+#full{
+	width: 100%;
+	background-color: #999;
+	background: url('../images/bordinha.jpg') repeat;
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+	
+	min-height:100%; /* real browsers */
+}
+
+#buttonBar{
+	position: absolute;
+	left: 30px;
+	top: 30px;
+}
+
+#elapsedBar{
+	background-color: rgba(10, 200, 10,    0.6);
+	position: absolute;
+	width: 50%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 50%;
+}
+
+#addCont{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 3.5em;
+	text-shadow: #333 1px 1px 1px;
+	padding: 3px;
+}
+
+#remain{
+	position: absolute;
+	width: 100%;
+	font-size: 5em;
+	color: rgba(255, 255, 255, 0.8);
+	top: 30%;
+}
