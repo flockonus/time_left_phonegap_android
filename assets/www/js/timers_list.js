@@ -5,13 +5,20 @@ j = $;
 	/*
 	 */
 	var TimersList = function(){
-		this.initialize
+		this.initialize()
 		
 	};
 	
-	// Restore from db all timers objects
+	// Restore from db all timers objects from DB
 	TimersList.prototype.initialize = function( obj ){
+		// TODO
+	}
+	
+	// behavior to be called from ui
+	TimersList.prototype.add = function( obj ){
+		// TODO - persist
 		
+		timeLeft.set( obj )
 	}
 	
 	

@@ -2,10 +2,15 @@
 <html>
   <head>
     <title>Notification Example</title>
-
+		
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
     <script type="text/javascript" charset="utf-8" src="js/phonegap-1.1.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/helper.js"></script>
+		<!--  http://www.datejs.com/2007/11/27/getting-started-with-datejs/    -->
+    <script type="text/javascript" charset="utf-8" src="js/date.js"></script>
     
     <link rel="stylesheet" media="all" type="text/css" href="./css/main.css" />
 <!--     < link rel="stylesheet" media="all" type="text/css" href="./css/basic.css" /> -->
@@ -42,13 +47,17 @@
     // Beep three times
     //
     function playBeep() {
+    	try{
         navigator.notification.beep(2);
+      } catch(e){}
     }
 
     // Vibrate for 2 seconds
     //
     function vibrate() {
+    	try{
         navigator.notification.vibrate(2000);
+    	} catch(e){}
     }
     
     // Tells the phone to shush!
@@ -78,8 +87,14 @@
   			<div id="addMainTemplate" >
   				<h2>ADD</h2>
   				<form id="formAddFromMin" action="#">
-		  			<label for="addMinutes">Minutes from now:</label> <br/>
+  					<label for="addTimerLabel">Label:</label>
+  					<br/>
+  					<input type="text" min="1" max="240" id="addTimerLabel" />
+  					<br/>
+		  			<label for="addMinutes">Minutes:</label>
+		  			<br/>
   					<input type="number" min="1" max="240" id="addMinutes" />
+  					<br/>
   					<button type="submit">✔</button>
   				</form>
 	  		</div>
@@ -90,5 +105,7 @@
   	<div id="templates" style="display: none;">
   	</div>
   	<script src="js/time_left.js"></script>
+  	<script src="js/timers_list.js"></script>
+  	<script src="js/inputs.js"></script>
   </body>
 </html>
