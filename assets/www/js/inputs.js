@@ -12,6 +12,9 @@ j = $;
 		
 		// FIXME vai pra classe de mananger bind the menu symbol 
 		j('#formAddFromMin').submit( this.submitAdd )
+		
+		// fix body width overflow on Android
+		j('#addContent').hide()
 	};
 	
 	Inputs.prototype.addClicked = function(e) {

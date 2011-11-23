@@ -58,6 +58,8 @@ j = $;
 			var elapsedMin = parseInt( remainingDelta )
 			var elapsedSec = (parseFloat( remainingDelta ) - elapsedMin) * 60
 			elapsedSec = Math.round( elapsedSec )
+			if( elapsedSec < 10 )
+				elapsedSec = "0"+elapsedSec
 			
 			this.eElapsedBar.css('width', percent+"%")
 			this.eRemain.text(elapsedMin+":"+elapsedSec)
