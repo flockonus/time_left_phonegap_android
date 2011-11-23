@@ -38,20 +38,32 @@ j = $;
 	 * Function to update the timer (+bg), and alert
 	 */
 	TimeLeft.prototype.loop = function() {
-		var iDelta = (new Date() - this.current.start) / 60/1000
-		var percent = (iDelta / this.current.deltaMin) * 100
+		// growing number, like: 0.010002, 0.020002, .. 1.1, 1.2 ..
+		try{
+		var elapsedDelta = (new Date() - this.current.start) / 60/1000
+		var remainingDelta = this.current.delta - elapsedDelta
+		var percent = (elapsedDelta / this.current.delta) * 100
 		if( percent >= 100 ){
 			
 			// TODO STOP AND ALARM!
-			vibrate()
 			
-			this.runningTick = false;
+			this.eElapsedBar.css('width', 100+"%")
+			this.eRemain.text("done!")
 			clearInterval( this.runningTick )
+			this.runningTick = false;
+			vibrate()
 		} else {
-			// TODO: Colocar o pretty escrito lá! :D
+			// not great, but better than rouding problem
+			remainingDelta = remainingDelta+""
+			var elapsedMin = parseInt( remainingDelta )
+			var elapsedSec = (parseFloat( remainingDelta ) - elapsedMin) * 60
+			elapsedSec = Math.round( elapsedSec )
+			
 			this.eElapsedBar.css('width', percent+"%")
-			console.log( iDelta, percent )
+			this.eRemain.text(elapsedMin+":"+elapsedSec)
+			//console.log( , percent )
 		}
+		} catch(e){console.log(e)}
 	};
 	
 	
