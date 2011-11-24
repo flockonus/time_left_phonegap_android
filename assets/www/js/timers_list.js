@@ -21,14 +21,7 @@ j = $;
 		timeLeft.set( obj )
 	}
 	
-	
-	
-	
-	// wait for stuff ready and go!
-	$(function(j){
-		window.timersList = new TimersList();
-	})
-	
+	window.modules.TimersList = TimersList;
 	
 })()
 

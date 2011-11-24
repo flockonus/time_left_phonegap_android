@@ -19,56 +19,6 @@
         < script type="text/javascript" charset="utf-8" src="jquery.mobile-1.0rc2.js"></script>
         -->
     
-    <script type="text/javascript" charset="utf-8">
-    Trigs = {}
-
-    // Wait for PhoneGap to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        // Empty
-        //Trigs.ini1 = setInterval( vibrate, 10*1000 )
-        //Trigs.ini2 = setInterval( playBeep, 10*1000 )
-    }
-
-    // Show a custom alert
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-    }
-
-    // Beep three times
-    //
-    function playBeep() {
-    	try{
-        navigator.notification.beep(2);
-      } catch(e){}
-    }
-
-    // Vibrate for 2 seconds
-    //
-    function vibrate() {
-    	try{
-        navigator.notification.vibrate(2000);
-    	} catch(e){}
-    }
-    
-    // Tells the phone to shush!
-    function stopAnnoying(){
-    	clearInterval(Trigs.ini1)
-    	clearInterval(Trigs.ini2)
-    }
-
-    </script>
-    
-    
   </head>
   <body onclick="stopAnnoying()">
   	<div id="full">
@@ -104,8 +54,30 @@
   	</div>
   	<div id="templates" style="display: none;">
   	</div>
+  	
+		<script type="text/javascript">
+  		//try{
+			window.modules = {}
+			if( window.modules ){
+				console.log(1111)
+			}
+			//}catch(e){
+			//	console.log(e)
+			//}
+  	</script>
+  	<script src="js/phonegap_ex.js"></script>
+  	<script src="js/model.js"></script>
   	<script src="js/time_left.js"></script>
   	<script src="js/timers_list.js"></script>
   	<script src="js/inputs.js"></script>
+  	<script src="js/bootstrap.js"></script>
+  	<script type="text/javascript">
+  		// Wait Phonegap to load and take action
+  		if (PhoneGap && navigator.notification && navigator.compass) {
+	  		document.addEventListener("deviceready", bootstrap, false);
+  		} else {
+  			$(document).ready( bootstrap );
+  		}
+  	</script>
   </body>
 </html>

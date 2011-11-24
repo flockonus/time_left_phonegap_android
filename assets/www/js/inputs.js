@@ -55,13 +55,7 @@ j = $;
 		return false;
 	};
 	
-	
-	
-	// wait for stuff ready and go!
-	$(function(j){
-		window.inputs = new Inputs();
-	})
-	
+	window.modules.Inputs = Inputs;
 	
 })()
 

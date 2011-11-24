@@ -9,7 +9,7 @@ j = $;
 	var TimeLeft = function(){
 		this.eElapsedBar = j('#elapsedBar')
 		this.eRemain = j('#remain')
-		
+		// holds the selected timer entry
 		this.current = null;
 		this.runningTick = false;
 		this.set( null )
@@ -69,10 +69,7 @@ j = $;
 	};
 	
 	
-	// wait for stuff ready and go!
-	$(function(j){
-		window.timeLeft = new TimeLeft();
-	})
+	window.modules.TimeLeft = TimeLeft;
 	
 	
 })()
