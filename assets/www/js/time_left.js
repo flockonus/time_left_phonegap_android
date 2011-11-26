@@ -45,12 +45,13 @@ j = $;
 		var percent = (elapsedDelta / this.current.delta) * 100
 		if( percent >= 100 ){
 			
-			// TODO STOP AND ALARM!
+			// FIXME checking expiration here is only valid for 1 timer
 			
 			this.eElapsedBar.css('width', 100+"%")
 			this.eRemain.text("done!")
 			clearInterval( this.runningTick )
 			this.runningTick = false;
+			timeModel.remove( this.current._id )
 			vibrate()
 		} else {
 			// not great, but better than rouding problem
