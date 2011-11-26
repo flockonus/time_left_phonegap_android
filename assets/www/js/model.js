@@ -33,7 +33,11 @@ j = $;
 	
 	// fix Date
 	var decodeData = function( jsonString ) {
-		var obj = JSON.parse( jsonString )
+		var obj
+		if( !(jsonString && typeof(jsonString) === 'string') )
+			return null
+		
+		obj = JSON.parse( jsonString )
 		
 		// inspired by -> http://blog.activa.be/index.php/2010/03/handling-dates-in-json-responses-with-jquery-1-4-the-easy-way/
 		var dateRegex = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/
